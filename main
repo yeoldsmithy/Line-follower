@@ -21,22 +21,27 @@ void loop() {
   servol.write(97);
   servor.write(87);
   delay(300); //go forwards
+  loop()
   }
   else if (L2 > x) {
   servor.write(89);
   delay(300);  //turns left a bit
+  loop()
   }
   else if (r2 > x) {
   servol.write(95);
   delay(300);  //turns right a bit
+  loop()
   }
   else if (L3 > x) {
   servor.write(87);
   delay(500); //turns left a lot
+  loop()
   }
   else if (r3 > x) {
   servol.write(97);
   delay(500);  //turns right a lot
+  loop()
   }  
   else {
    servor.write(87);
