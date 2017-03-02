@@ -1,0 +1,50 @@
+#include <Servo.h>
+
+Servo servol;
+Servo servor;
+
+void setup() {
+
+  servor.attach(2);
+  servol.attach(3);
+}
+void loop() {
+ float L1, L2, L3, r1, r2, r3, x = 2.3;
+ int t, s;
+ servor.write(87);
+ delay(1500);
+ servol.write(97); 
+   t = millis();
+   while (s < t + 2000){
+    L3 = analogRead(A0);
+    L2 = analogRead(A1);
+    L1 = analogRead(A2);
+    r1 = analogRead(A3);
+    r2 = analogRead(A4);
+    r3 = analogRead(A5);
+    s = millis();
+    if (r1 > x || r2 > x || r3 > x || L1 > x || L2 > x || L3 > x){
+     loop(); //start fallowing line again
+    }
+   }
+   servor.write(92);
+   servol.write(92);
+   delay(2000);
+   servol.write(97);
+   delay(1600);
+   servor.write(90);
+   t = millis();
+   L3 = analogRead(A0);
+   L2 = analogRead(A1);
+   L1 = analogRead(A2);
+   r1 = analogRead(A3);
+   r2 = analogRead(A4);
+   r3 = analogRead(A5);
+   while (s < t + 7000){
+    s = millis();
+    if (r1 > x || r2 > x || r3 > x || L1 > x || L2 > x || L3 > x){
+     loop(); //start fallowing line again
+   }
+  }
+  loop(); //didnt find anything, RIP our chances
+}
