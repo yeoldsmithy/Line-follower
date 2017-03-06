@@ -11,37 +11,37 @@ void setup() {
 
 void loop() {
  float t, s, L1, L2, L3, r1, r2, r3, x = 2.3;
- L3 = analogRead(A0);
- L2 = analogRead(A1);
- L1 = analogRead(A2);
- r1 = analogRead(A3);
- r2 = analogRead(A4);
- r3 = analogRead(A5);
+ L3 = analogRead(0);
+ L2 = analogRead(1);
+ L1 = analogRead(2);
+ r1 = analogRead(3);
+ r2 = analogRead(4);
+ r3 = analogRead(5);
  if (r1 > x || L1 > x){
   servol.write(97);
   servor.write(87);
   delay(300); //go forwards
-  loop()
+  loop();
   }
   else if (L2 > x) {
   servor.write(89);
   delay(300);  //turns left a bit
-  loop()
+  loop();
   }
   else if (r2 > x) {
   servol.write(95);
   delay(300);  //turns right a bit
-  loop()
+  loop();
   }
   else if (L3 > x) {
   servor.write(87);
   delay(500); //turns left a lot
-  loop()
+  loop();
   }
   else if (r3 > x) {
   servol.write(97);
   delay(500);  //turns right a lot
-  loop()
+  loop();
   }  
   else {
    servor.write(87);
@@ -50,12 +50,12 @@ void loop() {
   
   {
    t = millis();
-   L3 = analogRead(A0);
-   L2 = analogRead(A1);
-   L1 = analogRead(A2);
-   r1 = analogRead(A3);
-   r2 = analogRead(A4);
-   r3 = analogRead(A5);
+   L3 = analogRead(0);
+   L2 = analogRead(1);
+   L1 = analogRead(2);
+   r1 = analogRead(3);
+   r2 = analogRead(4);
+   r3 = analogRead(5);
    while (s < t + 2000){
     s = millis();
     if (r1 > x || r2 > x || r3 > x || L1 > x || L2 > x || L3 > x){
@@ -66,12 +66,12 @@ void loop() {
    delay(1600);
    servor.write(90);
    t = millis();
-   L3 = analogRead(A0);
-   L2 = analogRead(A1);
-   L1 = analogRead(A2);
-   r1 = analogRead(A3);
-   r2 = analogRead(A4);
-   r3 = analogRead(A5);
+   L3 = analogRead(0);
+   L2 = analogRead(1);
+   L1 = analogRead(2);
+   r1 = analogRead(3);
+   r2 = analogRead(4);
+   r3 = analogRead(5);
    while (s < t + 7000){
     s = millis();
     if (r1 > x || r2 > x || r3 > x || L1 > x || L2 > x || L3 > x){
