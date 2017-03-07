@@ -7,78 +7,53 @@ void setup() {
 
   servor.attach(2);
   servol.attach(3);
+  Serial.begin(9600);
 }
 
 void loop() {
- float t, s, L1, L2, L3, r1, r2, r3, x = 2.3;
+ float t, s, L1, L2, L3, r1, r2, r3, x = 650, y=500;
  L3 = analogRead(0);
  L2 = analogRead(1);
  L1 = analogRead(2);
  r1 = analogRead(3);
  r2 = analogRead(4);
  r3 = analogRead(5);
- if (r1 > x || L1 > x){
-  servol.write(97);
-  servor.write(87);
-  delay(300); //go forwards
+ servol.write(93);
+ servor.write(93);
+  if (L2 < x || L3 < x) {
+  servor.write(91);
+  delay(200);  //turns left a bit
   loop();
   }
-  else if (L2 > x) {
-  servor.write(89);
-  delay(300);  //turns left a bit
+  else if (r2 < x || r3 < x) {
+  servol.write(103);
+  delay(200);  //turns right a bit
+  loop();
+  } 
+  else if (r1 < x || L1 < x){
+  servol.write(101);
+  servor.write(91);
+  delay(200); //go forwards
   loop();
   }
-  else if (r2 > x) {
-  servol.write(95);
-  delay(300);  //turns right a bit
-  loop();
-  }
-  else if (L3 > x) {
-  servor.write(87);
-  delay(500); //turns left a lot
-  loop();
-  }
-  else if (r3 > x) {
-  servol.write(97);
-  delay(500);  //turns right a lot
-  loop();
-  }  
   else {
-   servor.write(87);
-   delay(1500);
-   servol.write(97);
-  
-  {
-   t = millis();
-   L3 = analogRead(0);
-   L2 = analogRead(1);
-   L1 = analogRead(2);
-   r1 = analogRead(3);
-   r2 = analogRead(4);
-   r3 = analogRead(5);
-   while (s < t + 2000){
-    s = millis();
-    if (r1 > x || r2 > x || r3 > x || L1 > x || L2 > x || L3 > x){
-     loop(); //start fallowing line again
+    servol.write(93); //stop right
+    servor.write(91); //start left
+    delay(2000); 
+    servor.write(91);//stop left
+    servol.write(107);//turn right
+    for(int i = 0 ; i < 10000 ; i++ ){
+     Serial.println("potatoes");
+     L3 = analogRead(0);
+     L2 = analogRead(1);
+     L1 = analogRead(2);
+     r1 = analogRead(3);
+     r2 = analogRead(4);
+     r3 = analogRead(5);
+     if (r1 < y || r2 < y || r3 < y || L1 < y || L2 < y || L3 < y){
+      loop(); //start fallowing line again
+     }
+     delay(1);
     }
-   }
-   servol.write(97);
-   delay(1600);
-   servor.write(90);
-   t = millis();
-   L3 = analogRead(0);
-   L2 = analogRead(1);
-   L1 = analogRead(2);
-   r1 = analogRead(3);
-   r2 = analogRead(4);
-   r3 = analogRead(5);
-   while (s < t + 7000){
-    s = millis();
-    if (r1 > x || r2 > x || r3 > x || L1 > x || L2 > x || L3 > x){
-     loop(); //start fallowing line again
-   }
   }
-  loop(); //didnt find anything, RIP our chances
-  }
-}
 }
