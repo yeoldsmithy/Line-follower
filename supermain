@@ -1,0 +1,46 @@
+#include <Servo.h>
+
+Servo servol;
+Servo servor;
+
+void setup() {
+
+  servor.attach(2);
+  servol.attach(3);
+}
+
+void loop() {
+ float t, s, L1, L2, L3, r1, r2, r3, x = 650;
+ L3 = analogRead(0);
+ L2 = analogRead(1);
+ L1 = analogRead(2);
+ r1 = analogRead(3);
+ r2 = analogRead(4);
+ r3 = analogRead(5);
+ servol.write(93);
+ servor.write(93);
+  if (L2 < x || L3 < x) {
+  servor.write(91);
+  delay(200);  //turns left a bit
+  loop();
+  }
+  else if (r2 < x || r3 < x) {
+  servol.write(103);
+  delay(200);  //turns right a bit
+  loop();
+  } 
+  else if (r1 < x || L1 < x){
+  servol.write(101);
+  servor.write(91);
+  delay(200); //go forwards
+  loop();
+  }
+  else {
+    for
+   servor.write(91);
+   delay(1000);
+   servol.write(103);
+   delay(1000);
+
+  }
+  }
