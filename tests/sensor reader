@@ -1,0 +1,21 @@
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  float L1, L2, L3, r1, r2, r3;
+ L3 = analogRead(0);
+ L2 = analogRead(1);
+ L1 = analogRead(2);
+ r1 = analogRead(3);
+ r2 = analogRead(4);
+ r3 = analogRead(5);
+ Serial.println(L3);
+ Serial.println(L2);
+ Serial.println(L1);
+ Serial.println(r1);
+ Serial.println(r2);
+ Serial.println(r3);
+ Serial.println("------------------break-------------------");
+ delay(750);
+}
