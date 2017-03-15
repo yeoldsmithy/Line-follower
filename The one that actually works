@@ -11,7 +11,7 @@ void setup() {
 }
 
 void loop() {
- float t, s, L1, L2, L3, r1, r2, r3, x = 650, y=500;
+ float t, s, L1, L2, L3, r1, r2, r3, x = 800, y=650;
  L3 = analogRead(0);
  L2 = analogRead(1);
  L1 = analogRead(2);
